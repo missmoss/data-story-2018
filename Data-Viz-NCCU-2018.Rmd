@@ -1,0 +1,390 @@
+---
+title: "用資料說故事"
+author: "Claire Tsao"
+date: "`r Sys.Date()`"
+output: 
+  ioslides_presentation:
+    df_print: tibble
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library("tidyverse")
+```
+
+## 大綱
+
+- 資料說故事方法步驟拆解
+- 視覺化的規劃
+- 視覺化免費工具介紹
+- 案例分享：別人如何說故事
+- 有趣資料介紹
+
+## 用資料說故事的兩種方法
+
+- 先有問題
+- 先有資料
+
+## 先有問題
+
+`「勞動部於五一勞動節前夕舉辦「全國模範勞工表揚典禮」，行政院長賴清德致詞時表示，失業率在 3 月已降到 3.66%，是自 90 年來的新低，勞動參與率高達 58.5%，則是 23 年來新高，勞工平均收入也創歷史新高，來到新台幣 49989 元。「因為有全國勞工的努力，台灣的經濟發展已經走出過去停滯的困境。」`
+來源：[NowNews](https://www.nownews.com/news/20180430/2745520)
+
+## 先有問題
+
+`「勞動部於五一勞動節前夕舉辦「全國模範勞工表揚典禮」，行政院長賴清德致詞時表示，失業率在 3 月已降到 3.66%，是自 90 年來的新低，勞動參與率高達 58.5%，則是 23 年來新高，勞工平均收入也創歷史新高，來到新台幣 49989 元。「因為有全國勞工的努力，台灣的經濟發展已經走出過去停滯的困境。」`
+來源：[NowNews](https://www.nownews.com/news/20180430/2745520)
+
+- 台灣的經濟發展是否走出停滯困境 -> 難以快速檢驗
+- 失業率、勞動參與率、新高新低 -> 可以檢驗
+
+## 先有問題
+
+- 台灣的經濟發展是否走出停滯困境 -> 難以快速檢驗
+- 失業率、勞動參與率、新高新低 -> 可以檢驗
+
+[主計總處統計專區：失業率](https://www.stat.gov.tw/point.asp?index=3)
+
+## 先有問題：分析步驟
+
+1. 你的問題是什麼？
+2. 心中有可能的答案嗎？答案可能是哪些？一一列舉出來。
+3. 怎樣的資料可以回答這個問題？如果我們的答案正確，資料會長怎樣？
+4. 找到這些資料。找不到的話，有沒有間接資料？
+5. 根據找到的資料，對照 3. 做的設想，檢查資料和哪種答案最為相符。
+6. 討論相符／不相符的可能原因。
+
+## 先有問題：分析步驟
+
+1.你的問題是什麼？
+
+我想問：`七年之癢存在嗎？`
+
+-> 把問題的形式轉變成資料可以回答的問題
+
+## 先有問題：分析步驟
+
+1.你的問題是什麼？
+
+我想問：`七年之癢存在嗎？`
+
+-> 把問題的形式轉變成資料可以回答的問題
+
+`人們在結婚第七年的時候，會比其他時候容易離婚嗎？`
+
+## 先有問題：分析步驟
+
+1.你的問題是什麼？
+
+我想問：`七年之癢存在嗎？`
+
+-> 把問題的形式轉變成資料可以回答的問題
+
+`人們在結婚第七年的時候，會比其他時候容易離婚嗎？`
+
+-> 其他時候 = 第一年到第六年、第八年以後
+
+## 先有問題：分析步驟
+
+2.心中有可能的答案嗎？答案可能是哪些？一一列舉出來。
+
+`七年之癢存在嗎？`
+
+`　　Ans 1. 存在`
+
+`　　Ans 2. 不存在`
+
+## 先有問題：分析步驟
+
+2.心中有可能的答案嗎？答案可能是哪些？一一列舉出來。
+
+`七年之癢存在嗎？`
+
+`　　Ans 1. 存在`
+
+　　-> 人們在結婚第七年的時候，比其他時候容易離婚
+
+`　　Ans 2. 不存在`
+
+## 先有問題：分析步驟
+
+2.心中有可能的答案嗎？答案可能是哪些？一一列舉出來。
+
+`七年之癢存在嗎？`
+
+`　　Ans 1. 存在`
+
+　　-> 人們在結婚第七年的時候，比其他時候容易離婚  
+　　-> 人們在結婚第七年的離婚率比其他年的離婚率高
+　　
+## 先有問題：分析步驟
+
+2.心中有可能的答案嗎？答案可能是哪些？一一列舉出來。
+
+`七年之癢存在嗎？`
+
+`　　Ans 1. 存在`
+
+　　-> 人們在結婚第七年的時候，比其他時候容易離婚  
+　　-> 人們在結婚第七年的離婚率比其他年的離婚率高
+
+`　　Ans 2. 不存在`
+
+　　-> 人們在結婚第七年的時候，跟其他時候比起來，並沒有比較容易離婚  
+　　-> 人們在婚後 n 年每年的離婚率差不多，或是離婚率波動，沒有明顯的高低趨勢
+
+## 先有問題：分析步驟
+
+3.怎樣的資料可以回答這個問題？如果我們的答案正確，資料會長怎樣？  
+
+假如七年之癢存在  
+-> 人們在結婚第七年的離婚率比其他年的離婚率高  
+
+## 先有問題：分析步驟
+
+3.怎樣的資料可以回答這個問題？如果我們的答案正確，資料會長怎樣？  
+
+假如七年之癢存在  
+-> 人們在結婚第七年的離婚率比其他年的離婚率高  
+-> 需要人們「結婚年數」對「該年離婚率」的資料
+
+## 先有問題：分析步驟
+
+假如七年之癢存在，資料可能長這樣：
+
+```{r sevenT, echo = FALSE}
+yearOfMarriage <- seq(10)
+divorceRate <- c(.02, .03, .03, .04, .03, .03, .08, .05, .03, .035)
+divorce <- data_frame(yearOfMarriage, divorceRate)
+ggplot(divorce, aes(x=yearOfMarriage, y=divorceRate)) +
+  geom_point() +
+  geom_line() +
+  scale_x_continuous(breaks=seq(10)) +
+  scale_y_continuous(labels = scales::percent) +
+  theme(text=element_text(family="Noto Sans CJK TC")) +
+  xlab("結婚年數") +
+  ylab("離婚率")
+```
+
+## 先有問題：分析步驟
+
+4.找到這些資料。找不到的話，有沒有間接資料？
+
+## 先有問題：分析步驟
+
+4.找到這些資料。找不到的話，有沒有間接資料？
+
+Google「離婚 台灣」之後找到內政部戶政司的 [網站](https://www.ris.gov.tw/zh_TW/346)
+
+## 先有問題：分析步驟
+
+4.找到這些資料。找不到的話，有沒有間接資料？
+
+Google「離婚 台灣」之後找到內政部戶政司的 [網站](https://www.ris.gov.tw/zh_TW/346)
+
+`最像的是 C.結婚與離婚 / 09離婚對數按結婚期間(按發生)`
+
+## 先有問題：分析步驟
+
+5.根據找到的資料，對照 3. 做的設想，檢查資料和哪種答案最為相符。
+`用視覺化來探索！`
+
+我的嘗試： [離婚謎團（上）：七年之癢存在嗎？](https://medium.com/@amossclaire/%E9%9B%A2%E5%A9%9A%E8%AC%8E%E5%9C%98-%E4%B8%8A-%E4%B8%83%E5%B9%B4%E4%B9%8B%E7%99%A2%E5%AD%98%E5%9C%A8%E5%97%8E-41e8e9f480fe)
+
+## 先有資料
+
+- [綜合所得稅申報核定統計專冊](https://ws.fia.gov.tw/001/upload/ias/104%E5%B9%B4%E5%BA%A6%E7%B6%9C%E5%90%88%E6%89%80%E5%BE%97%E7%A8%85%E7%94%B3%E5%A0%B1%E6%A0%B8%E5%AE%9A%E7%B5%B1%E8%A8%88%E5%B0%88%E5%86%8A.html)
+- [不動產交易實價登錄](http://lvr.land.moi.gov.tw/homePage.action)
+
+## 先有資料
+
+- [綜合所得稅申報核定統計專冊](https://ws.fia.gov.tw/001/upload/ias/104%E5%B9%B4%E5%BA%A6%E7%B6%9C%E5%90%88%E6%89%80%E5%BE%97%E7%A8%85%E7%94%B3%E5%A0%B1%E6%A0%B8%E5%AE%9A%E7%B5%B1%E8%A8%88%E5%B0%88%E5%86%8A.html)
+
+老梗的統計資料，每年公佈時都會有固定版面。
+
+`「根據財政部『104年度全台所得總額中位數村里統計』，新竹市東區關新里所得中位數達242.5萬元，為全國榜首，全國前14名都由新竹縣市包辦，第15名才是北市內湖的寶湖里。」`來源：[東森財經新聞](https://fnc.ebc.net.tw/FncNews/Content/13777)
+
+`「您知道全台灣最有錢的里在哪嗎？答案就是台北市松山區的精忠里，每戶年收入平均高達989.8萬。」`來源：[ETtoday新聞雲](https://www.ettoday.net/news/20150913/563974.htm)
+
+## 先有資料
+
+- [綜合所得稅申報核定統計專冊](https://ws.fia.gov.tw/001/upload/ias/104%E5%B9%B4%E5%BA%A6%E7%B6%9C%E5%90%88%E6%89%80%E5%BE%97%E7%A8%85%E7%94%B3%E5%A0%B1%E6%A0%B8%E5%AE%9A%E7%B5%B1%E8%A8%88%E5%B0%88%E5%86%8A.html)
+
+有很多主題可以探索：
+
+- 表 16-2A 各級距各類所得金額：不同級距薪資、利息、股利所得的比例
+- 表 166-A 各縣市鄉鎮村里各類所得金額：不同地區各類所得比例
+- 表 165-A 綜稅所得總額各縣市鄉鎮村里統計：除了哪個里最有錢之外，也可以觀察同一地區逐年變化
+
+## 先有資料
+
+- [不動產交易實價登錄](http://lvr.land.moi.gov.tw/homePage.action)
+
+也是個曝光率很高的老梗的統計資料，有許多相關應用。
+
+- [信義房屋查詢系統](http://tradeinfo.sinyi.com.tw/)
+- [信義房屋房價指數](http://www.sinyi.com.tw/knowledge/HPI_season.php/10345/2?_ga=2.166508030.1936027907.1525405905-2142784424.1525405905)
+
+## 先有資料：分析步驟
+
+1. 掃過所有資料，尋找有故事的亮點（新聞點？）
+2. 針對亮點，挖資料，找故事
+3. 將資料與採訪整合成完整的報導
+
+## 先有資料：分析步驟
+
+1.掃過所有資料，尋找有故事的亮點（新聞點？）
+
+資料： [綜合所得稅申報核定統計專冊](https://ws.fia.gov.tw/001/upload/ias/104%E5%B9%B4%E5%BA%A6%E7%B6%9C%E5%90%88%E6%89%80%E5%BE%97%E7%A8%85%E7%94%B3%E5%A0%B1%E6%A0%B8%E5%AE%9A%E7%B5%B1%E8%A8%88%E5%B0%88%E5%86%8A.html)
+
+`亮點：戰天龍國好像很好玩？`
+
+## 先有資料：分析步驟
+
+2.針對亮點，挖資料，找故事  
+
+`問題：天龍國／大安區是所得第一名嗎？`
+`如果不是（違反常識？），那是哪一區？`
+`這一區為什麼可以贏天龍國？`
+
+## 先有資料：分析步驟
+
+3.將資料與採訪整合成完整的報導 
+
+`問題：天龍國／大安區是所得第一名嗎？` -> 不是耶！！！
+`如果不是（違反常識？），那是哪一區？` -> 是內湖寶湖里、文山政大里、新店華城里
+`這一區為什麼可以贏天龍國？` -> 都是別墅？有錢人喜歡住山上？
+
+我的嘗試： [雙北所得地圖](https://missmoss.github.io/taipei-income-map/)
+
+## 視覺化如何規劃
+
+要用哪種圖表？  
+  
+可參考 [金融時報 Visual Vocabulary](https://ft-interactive.github.io/visual-vocabulary-templates/)
+
+## 視覺化如何規劃
+
+`原則：圖表本身可以被獨立閱讀`
+
+## 視覺化如何規劃
+
+`原則：圖表本身可以被獨立閱讀`
+
+- 標題：點出圖表主題
+- 座標軸及標題：什麼資料、數值單位
+- 圖例：顏色、形狀、大小等，分別代表什麼
+
+## 視覺化如何規劃
+
+圖表的元素們：
+```{r nobel, echo = FALSE, include=FALSE}
+ll <- read.csv("nobel-viz/laureate.csv", stringsAsFactors=FALSE)
+ll$born <- as.Date(ll$born , "%Y-%m-%d")
+ll$died <- as.Date(ll$died , "%Y-%m-%d")
+ll <- mutate(ll, age = year - as.numeric(format(born,'%Y')))
+lldraw <- select(ll, year, age, category, gender)
+lldraw <- na.omit(lldraw)
+lldraw$category <- as.factor(lldraw$category)
+lldraw$gender <- as.factor(lldraw$gender)
+cPalette <- c("#1D3C5C", "#FEC93B")
+g <- ggplot(data=lldraw, aes(x=year, y=age)) + 
+  geom_point(size=0.7, aes(colour=gender)) +
+  facet_grid(. ~ category) +
+  scale_x_continuous("Year", breaks=c(1900, 1950, 2000)) +
+  scale_y_continuous("Age", limit=c(17,95)) +
+  scale_colour_manual(values=cPalette) +
+  ggtitle("Nobel Laureates by Age and Gender") + 
+  theme(text=element_text(size=10), 
+        title=element_text(size=20),
+        axis.title=element_text(size=14),
+        legend.title=element_text(size=14),
+        strip.text=element_text(size=14),
+        strip.background = element_rect(fill="#ECDB72"),
+        panel.grid.major = element_line(colour="#E3E3DC"),
+        panel.background = element_rect(fill="white"),
+        plot.background = element_rect(fill = "#E3E3DC"),
+        legend.key = element_rect(fill="white"))
+```
+```{r nobel2, echo = FALSE}
+g
+```
+
+## 視覺化免費工具
+
+- 圖表：[plot.ly](plot.ly)
+- 圖表：[plotdb](plotdb.com) -> 注意每個圖需要的資料長相
+- 地圖：[carto](carto.com) -> 要有經緯度
+
+## 案例分享：別人如何說故事
+
+- 紐約時報 [全球暖化](https://www.nytimes.com/interactive/2017/01/18/science/earth/2016-hottest-year-on-record.html)
+- 紐約時報 [誰是常春藤名校學生](https://www.nytimes.com/interactive/2017/01/18/upshot/some-colleges-have-more-students-from-the-top-1-percent-than-the-bottom-60.html)
+- 衛報 [英國脫歐公投結果](https://www.theguardian.com/politics/ng-interactive/2016/jun/23/eu-referendum-live-results-and-analysis)
+- 538 [美國的槍殺](https://fivethirtyeight.com/features/gun-deaths/)
+
+## 有趣資料介紹
+
+之前做的有趣資料 [大禮包](https://www.dropbox.com/sh/yth2z6ln336itex/AAD1lHnGeX9g77DaFvcG006ia?dl=0)，內容物包含：
+
+- `guns`：美國槍殺資料（From [Kaggle](https://www.kaggle.com/datasets)）
+- `college_admission`：20 年的大學榜單資料
+- `traffic`：台北市交通事故資料( [資料欄位說明](http://data.taipei/opendata/datalist/datasetMeta?oid=2f238b4f-1b27-4085-93e9-d684ef0e2735))
+- `pokemon`：700 隻寶可夢的基本資料（From [Kaggle](https://www.kaggle.com/datasets)）
+
+中文檔案有 utf8 和 big5 兩種，windows 用戶請下載 big5，macOS/Linus 請下載 utf8
+
+## 有趣資料介紹
+
+之前做的有趣資料 [大禮包](https://www.dropbox.com/sh/yth2z6ln336itex/AAD1lHnGeX9g77DaFvcG006ia?dl=0)，內容物包含：
+
+- `pokemon`：700 隻寶可夢的基本資料（From [Kaggle](https://www.kaggle.com/datasets)）
+- `guns`：美國槍殺資料（From [Kaggle](https://www.kaggle.com/datasets)）
+- `traffic`：台北市交通事故資料( [資料欄位說明](http://data.taipei/opendata/datalist/datasetMeta?oid=2f238b4f-1b27-4085-93e9-d684ef0e2735))
+- `college_admission`：20 年的大學榜單資料
+
+## 有趣資料介紹
+
+`pokemon`：700 隻寶可夢的基本資料（From [Kaggle](https://www.kaggle.com/datasets)）
+```{r pokemon, echo = FALSE, include=FALSE}
+pkm <- read_csv("ggplot2_workshop/Pokemon.csv")
+```
+```{r pkm2, echo = FALSE}
+head(pkm)
+```
+## 有趣資料介紹
+
+`guns`：美國槍殺資料（From [Kaggle](https://www.kaggle.com/datasets)）
+```{r guns, echo = FALSE, include=FALSE}
+guns <- read_csv("ggplot2_workshop/gs.csv")
+```
+```{r guns2, echo = FALSE}
+head(guns)
+```
+
+## 有趣資料介紹
+
+`traffic`：台北市交通事故資料( [資料欄位說明](http://data.taipei/opendata/datalist/datasetMeta?oid=2f238b4f-1b27-4085-93e9-d684ef0e2735))
+```{r tfc, echo = FALSE, include=FALSE}
+tfc <- read_csv("ggplot2_workshop/traffic.csv")
+```
+```{r tfc2, echo = FALSE}
+head(tfc)
+```
+
+## 有趣資料介紹
+
+`college_admission`：20 年的大學榜單資料
+```{r ca, echo = FALSE, include=FALSE}
+ca <- read_csv("ggplot2_workshop/ca.csv")
+```
+```{r ca2, echo = FALSE}
+head(ca)
+```
+
+## 資料去哪挖
+
+- [政府資料開放平台](https://data.gov.tw/)
+- [中華民國統計資訊網](https://www.stat.gov.tw/np.asp?ctNode=452)
+- [Kaggle](https://www.kaggle.com/datasets)
+- Google 關鍵字
