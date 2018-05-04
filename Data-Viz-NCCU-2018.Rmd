@@ -116,7 +116,7 @@ library("tidyverse")
 
 　　-> 人們在結婚第七年的時候，比其他時候容易離婚  
 　　-> 人們在結婚第七年的離婚率比其他年的離婚率高
-　　
+
 ## 先有問題：分析步驟
 
 2.心中有可能的答案嗎？答案可能是哪些？一一列舉出來。
@@ -279,7 +279,7 @@ Google「離婚 台灣」之後找到內政部戶政司的 [網站](https://www.
 
 圖表的元素們：
 ```{r nobel, echo = FALSE, include=FALSE}
-ll <- read.csv("nobel-viz/laureate.csv", stringsAsFactors=FALSE)
+ll <- read.csv("../nobel-viz/laureate.csv", stringsAsFactors=FALSE)
 ll$born <- as.Date(ll$born , "%Y-%m-%d")
 ll$died <- as.Date(ll$died , "%Y-%m-%d")
 ll <- mutate(ll, age = year - as.numeric(format(born,'%Y')))
